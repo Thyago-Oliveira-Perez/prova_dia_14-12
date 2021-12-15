@@ -20,16 +20,4 @@ public class ConnectionFactory {
         }
     }
 
-    public void createDataBase(){
-
-        String sqlCreate = "CREATE SCHEMA `prova_14-12`";
-        try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(sqlCreate);
-            preparedStatement.execute();
-            preparedStatement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

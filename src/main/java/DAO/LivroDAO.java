@@ -55,12 +55,12 @@ public class LivroDAO {
 
     public List<Livro> listarLivros(){
         List<Livro> retornoBanco = new ArrayList<>();
-        Livro livro = new Livro();
         String sqlSelect = "SELECT * FROM `livros`";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlSelect);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
+                Livro livro = new Livro();
                 livro.setIdLivro(resultSet.getInt("id_livro"));
                 livro.setNomeLivro(resultSet.getString("nome_livro"));
                 livro.setIdGenero(resultSet.getInt("id_genero"));
@@ -76,13 +76,13 @@ public class LivroDAO {
 
     public List<Livro> listarLivrosByIdBiblioteca(int idSelecionado){
         List<Livro> retornoBanco = new ArrayList<>();
-        Livro livro = new Livro();
         String sqlSelect = "SELECT * FROM `livros` WHERE id_biblioteca = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlSelect);
             preparedStatement.setInt(1, idSelecionado);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
+                Livro livro = new Livro();
                 livro.setIdLivro(resultSet.getInt("id_livro"));
                 livro.setNomeLivro(resultSet.getString("nome_livro"));
                 livro.setIdGenero(resultSet.getInt("id_genero"));

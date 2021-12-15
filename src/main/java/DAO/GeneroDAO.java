@@ -48,12 +48,12 @@ public class GeneroDAO {
 
     public List<Genero> listarGeneros(){
         List<Genero> retornoBanco = new ArrayList<>();
-        Genero genero = new Genero();
         String sqlSelect = "SELECT * FROM `generos`";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlSelect);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
+                Genero genero = new Genero();
                 genero.setIdGenero(resultSet.getInt("id_genero"));
                 genero.setNomeGenero(resultSet.getString("nome_genero"));
                 retornoBanco.add(genero);
